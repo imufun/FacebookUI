@@ -29,7 +29,7 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 60)
+        return CGSize(width: view.frame.width, height: 200)
     }
     
     
@@ -51,13 +51,15 @@ class FeedCell : UICollectionViewCell {
         
         addSubview(NameLabel)
         addSubview(ProfileImageView)
+        addSubview(StatusTextView)
+        addSubview(ProfileCoverImage)
         
-       // addConstraisWithFormat(format:  "H:|-8-[v0(44)]-8-[v1]|", views: ProfileImageView, NameLabel)
+        addConstraisWithFormat(format:  "H:|-8-[v0(44)]-8-[v1]|", views: ProfileImageView, NameLabel)
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-8-[v0(44)]-8-[v1]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":ProfileImageView, "v1":NameLabel]))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":NameLabel]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[v0(44)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":ProfileImageView]))
+        addConstraisWithFormat(format: "H:|-4-[v0]-4-|", views: StatusTextView)
+        addConstraisWithFormat(format: "H:|[v0]|", views: ProfileCoverImage)
+        addConstraisWithFormat(format: "V:|-12-[v0]", views: NameLabel)
+        addConstraisWithFormat(format: "V:|-8-[v0(44)]-4-[v1(30)]-4-[v2]", views: ProfileImageView, StatusTextView,ProfileCoverImage)
         
     }
     
@@ -65,8 +67,20 @@ class FeedCell : UICollectionViewCell {
     
     let  NameLabel: UILabel  = {
         let label = UILabel()
-        label.text = "This is Simple text"
-        label.textColor = UIColor.black
+        
+        label.numberOfLines = 2
+        
+        let attributeText = NSMutableAttributedString(string: "Mohammad Imran Mia", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14)])
+        
+        attributeText.append(NSAttributedString(string: "\nFebruary 18 | Bangladesh", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 12), NSForegroundColorAttributeName: UIColor.gray]))
+        
+        let paragrapStyle = NSMutableParagraphStyle()
+        paragrapStyle.lineSpacing = 4
+        
+        
+        attributeText.addAttribute(NSParagraphStyleAttributeName, value: paragrapStyle, range: NSMakeRange(0, attributeText.string.characters.count))
+        
+        label.attributedText = attributeText
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -74,10 +88,27 @@ class FeedCell : UICollectionViewCell {
     
     let ProfileImageView : UIImageView = {
         let imageView = UIImageView()
+        imageView.image = #imageLiteral(resourceName: "sinbad")
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = UIColor.red
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
+    }()
+    
+    let StatusTextView : UITextView = {
+        
+        let textView = UITextView()
+        textView.text = "Learn IOS development "
+        textView.font = UIFont.boldSystemFont(ofSize: 14)
+        return textView
+    }()
+    
+    let ProfileCoverImage: UIImageView = {
+        let imageV = UIImageView()
+        imageV.image =  #imageLiteral(resourceName: "cover")
+        imageV.contentMode = .scaleAspectFill
+        imageV.translatesAutoresizingMaskIntoConstraints = false
+        return imageV
         
     }()
     
@@ -95,7 +126,7 @@ extension UIView {
         }
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil
-        , views: viewDictonary))
+            , views: viewDictonary))
     }
 }
 

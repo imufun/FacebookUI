@@ -26,13 +26,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FacebookUI/ViewController.swift"
-            timestampString = "540583866.286501"
+            timestampString = "540588697.028332"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "ProfileImageView"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FacebookUI/ViewController.swift"
+            timestampString = "540588697.028332"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "NameLabel"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FacebookUI.FeedCell.init (frame : __C.CGRect) -&gt; FacebookUI.FeedCell"
+                  moduleName = "FacebookUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sinbad/Desktop/IOS/FacebookUI/FacebookUI/ViewController.swift"
+                  timestampString = "540586326.290725"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "103">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FacebookUI.FeedCell.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;FacebookUI.FeedCell&gt;"
+                  moduleName = "FacebookUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sinbad/Desktop/IOS/FacebookUI/FacebookUI/ViewController.swift"
+                  timestampString = "540586326.301314"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FacebookUI.FeedCell.ProfileImageView.getter : __ObjC.UIImageView"
+                  moduleName = "FacebookUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sinbad/Desktop/IOS/FacebookUI/FacebookUI/ViewController.swift"
+                  timestampString = "540586326.309551"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "35">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
