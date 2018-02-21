@@ -29,7 +29,7 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
+        return CGSize(width: view.frame.width, height: 300)
     }
     
     
@@ -53,13 +53,26 @@ class FeedCell : UICollectionViewCell {
         addSubview(ProfileImageView)
         addSubview(StatusTextView)
         addSubview(ProfileCoverImage)
+        addSubview(likeCommentLable)
+        addSubview(divider)
+        addSubview(likeButton)
+        addSubview(commentButton)
+        addSubview(shareButton)
         
-        addConstraisWithFormat(format:  "H:|-8-[v0(44)]-8-[v1]|", views: ProfileImageView, NameLabel)
+        addConstraisWithFormat(format: "H:|-8-[v0(44)]-12-[v1]|", views: ProfileImageView, NameLabel)
         
         addConstraisWithFormat(format: "H:|-4-[v0]-4-|", views: StatusTextView)
         addConstraisWithFormat(format: "H:|[v0]|", views: ProfileCoverImage)
         addConstraisWithFormat(format: "V:|-12-[v0]", views: NameLabel)
-        addConstraisWithFormat(format: "V:|-8-[v0(44)]-4-[v1(30)]-4-[v2]", views: ProfileImageView, StatusTextView,ProfileCoverImage)
+        addConstraisWithFormat(format: "H:|-8-[v0]|", views: likeCommentLable)
+        
+        addConstraisWithFormat(format: "H:|-8-[v0]|", views: divider)
+        
+        //addConstraisWithFormat(format: "H:|-8-[v0(20)]-8-[v1(20)]-8-[v2(20)]", views: likeButton, commentButton,shareButton)
+        //addConstraisWithFormat(format: "H:|-8-[v0]|", views: commentButton)
+        //addConstraisWithFormat(format: "H:|-8-[v0]|", views: shareButton)
+        
+        addConstraisWithFormat(format: "V:|-8-[v0(44)]-4-[v1(30)]-4-[v2]-8-[v3(30)]-8-[v4(0.5)]-8-[v5(30)][v6(30)][v7(30)]|", views: ProfileImageView, StatusTextView,ProfileCoverImage,likeCommentLable, divider,likeButton,commentButton,shareButton)
         
     }
     
@@ -72,7 +85,7 @@ class FeedCell : UICollectionViewCell {
         
         let attributeText = NSMutableAttributedString(string: "Mohammad Imran Mia", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14)])
         
-        attributeText.append(NSAttributedString(string: "\nFebruary 18 | Bangladesh", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 12), NSForegroundColorAttributeName: UIColor.gray]))
+        attributeText.append(NSAttributedString(string: "\nFebruary 18 | Bangladesh", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 12), NSForegroundColorAttributeName: UIColor.rgb(red: 155, green: 161, blue: 161)]))
         
         let paragrapStyle = NSMutableParagraphStyle()
         paragrapStyle.lineSpacing = 4
@@ -108,13 +121,64 @@ class FeedCell : UICollectionViewCell {
         imageV.image =  #imageLiteral(resourceName: "cover")
         imageV.contentMode = .scaleAspectFill
         imageV.translatesAutoresizingMaskIntoConstraints = false
+        imageV.layer.masksToBounds = true
         return imageV
         
     }()
     
+    let likeCommentLable : UILabel = {
+        let lable = UILabel()
+        lable.text = "Like 100 * Comment 200"
+        lable.font = UIFont.boldSystemFont(ofSize: 12)
+        lable.textColor = UIColor.rgb(red: 155, green: 161, blue: 161)
+        return lable
+    }()
+    
+    
+    //divider
+    let divider : UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.rgb(red: 226, green: 28, blue: 232)
+        return view
+    }()
+    
+    let likeButton: UIButton = {
+        let button = UIButton()
+        //        button.setImage(#imageLiteral(resourceName: "like"), for: .normal)
+        button.setTitle("Like", for: .normal)
+        button.setImage(#imageLiteral(resourceName: "like"), for: .normal)
+        button.setTitleColor(UIColor.rgb(red: 143, green: 150, blue: 263), for: .normal)
+        button.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        return button
+        
+    }()
+    let commentButton: UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "chat"), for: .normal)
+        button.setTitleColor(UIColor.rgb(red: 143, green: 150, blue: 263), for: .normal)
+        return button
+        
+    }()
+    let shareButton: UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "share-symbol"), for: .normal)
+        button.setTitleColor(UIColor.rgb(red: 143, green: 150, blue: 263), for: .normal)
+        return button
+        
+    }()
+    
+    
+    static func buttonTitle(title : String, imageName : String) -> UIButton {
+        
+    }
     
 }
 
+extension UIColor {
+    static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
+        return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
+    }
+}
 
 extension UIView {
     func addConstraisWithFormat(format: String, views: UIView...) {

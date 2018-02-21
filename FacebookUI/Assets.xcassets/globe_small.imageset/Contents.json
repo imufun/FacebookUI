@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "globe_small.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "cover.jpg",
       "scale" : "2x"
     },
     {
