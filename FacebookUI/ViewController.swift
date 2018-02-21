@@ -29,9 +29,13 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 300)
+        return CGSize(width: view.frame.width, height: 400)
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        collectionView?.collectionViewLayout.invalidateLayout()
+    }
     
 }
 
@@ -63,17 +67,19 @@ class FeedCell : UICollectionViewCell {
         
         addConstraisWithFormat(format: "H:|-4-[v0]-4-|", views: StatusTextView)
         addConstraisWithFormat(format: "H:|[v0]|", views: ProfileCoverImage)
-        addConstraisWithFormat(format: "V:|-12-[v0]", views: NameLabel)
+        
         addConstraisWithFormat(format: "H:|-8-[v0]|", views: likeCommentLable)
         
-        addConstraisWithFormat(format: "H:|-8-[v0]|", views: divider)
+        addConstraisWithFormat(format: "H:|-12-[v0]-12-|", views: divider)
         
-        //addConstraisWithFormat(format: "H:|-8-[v0(20)]-8-[v1(20)]-8-[v2(20)]", views: likeButton, commentButton,shareButton)
-        //addConstraisWithFormat(format: "H:|-8-[v0]|", views: commentButton)
-        //addConstraisWithFormat(format: "H:|-8-[v0]|", views: shareButton)
-        
-        addConstraisWithFormat(format: "V:|-8-[v0(44)]-4-[v1(30)]-4-[v2]-8-[v3(30)]-8-[v4(0.5)]-8-[v5(30)][v6(30)][v7(30)]|", views: ProfileImageView, StatusTextView,ProfileCoverImage,likeCommentLable, divider,likeButton,commentButton,shareButton)
-        
+        //hack way to constant
+        addConstraisWithFormat(format: "H:|[v0(v2)][v1(v2)][v2]|", views: likeButton, commentButton,shareButton)
+        addConstraisWithFormat(format: "V:|-12-[v0]", views: NameLabel)
+        addConstraisWithFormat(format: "V:|-8-[v0(44)]-4-[v1(30)]-4-[v2]-8-[v3(30)]-8-[v4(0.5)][v5(44)]|", views: ProfileImageView, StatusTextView,ProfileCoverImage,likeCommentLable, divider,likeButton)
+       
+        //hack way to constant
+        addConstraisWithFormat(format: "V:[v0(44)]|", views: commentButton)
+        addConstraisWithFormat(format: "V:[v0(44)]|", views: shareButton)
     }
     
     
@@ -141,36 +147,50 @@ class FeedCell : UICollectionViewCell {
         view.backgroundColor = UIColor.rgb(red: 226, green: 28, blue: 232)
         return view
     }()
-    
     let likeButton: UIButton = {
         let button = UIButton()
-        //        button.setImage(#imageLiteral(resourceName: "like"), for: .normal)
         button.setTitle("Like", for: .normal)
-        button.setImage(#imageLiteral(resourceName: "like"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "like-1"), for: .normal)
         button.setTitleColor(UIColor.rgb(red: 143, green: 150, blue: 263), for: .normal)
-        button.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         return button
         
     }()
+    
     let commentButton: UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "chat"), for: .normal)
+        button.setTitle("Comment", for: .normal)
+        button.setImage(#imageLiteral(resourceName: "comment"), for: .normal)
         button.setTitleColor(UIColor.rgb(red: 143, green: 150, blue: 263), for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         return button
         
     }()
     let shareButton: UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "share-symbol"), for: .normal)
+        button.setTitle("Share", for: .normal)
+        button.setImage(#imageLiteral(resourceName: "share"), for: .normal)
         button.setTitleColor(UIColor.rgb(red: 143, green: 150, blue: 263), for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         return button
         
     }()
     
     
-    static func buttonTitle(title : String, imageName : String) -> UIButton {
-        
-    }
+    //    let likeButton  = FeedCell.buttonTitle(title: "like", imageName: #imageLiteral(resourceName: "like-1"))
+    //    let commentButton = FeedCell.buttonTitle(title: "Comment", imageName: #imageLiteral(resourceName: "comment"))
+    //    let shareButton = FeedCell.buttonTitle(title: "Share", imageName: #imageLiteral(resourceName: "share"))
+    //
+    //    static func buttonTitle(title: String, imageName: String) -> UIButton {
+    //        let button = UIButton()
+    //        button.setTitle(title, for: .normal)
+    //       // button.setImage(UIImage(named: imageName), for: .normal)
+    //        button.setImage(imageName, for: .normal)
+    //        button.setTitleColor(UIColor.rgb(red: 143, green: 150, blue: 263), for: .normal)
+    //        button.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+    //        //button.titleLabel?.font = UIFont.systemFontSize(14)
+    //        return button
+    //    }
     
 }
 
