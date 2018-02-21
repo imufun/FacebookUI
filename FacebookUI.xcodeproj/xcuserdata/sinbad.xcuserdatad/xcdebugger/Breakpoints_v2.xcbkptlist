@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FacebookUI/ViewController.swift"
-            timestampString = "540913242.0118001"
+            timestampString = "540921233.653387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "ProfileImageView"
             landmarkType = "24">
          </BreakpointContent>
@@ -38,64 +38,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FacebookUI/ViewController.swift"
-            timestampString = "540913242.0118001"
+            timestampString = "540920601.555742"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "NameLabel"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FacebookUI.FeedCell.init (frame : __C.CGRect) -&gt; FacebookUI.FeedCell"
-                  moduleName = "FacebookUI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sinbad/Desktop/IOS/FacebookUI/FacebookUI/ViewController.swift"
-                  timestampString = "540586326.290725"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "74"
-                  endingLineNumber = "74"
-                  offsetFromSymbolStart = "103">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FacebookUI.FeedCell.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;FacebookUI.FeedCell&gt;"
-                  moduleName = "FacebookUI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sinbad/Desktop/IOS/FacebookUI/FacebookUI/ViewController.swift"
-                  timestampString = "540586326.301314"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "74"
-                  endingLineNumber = "74"
-                  offsetFromSymbolStart = "48">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FacebookUI.FeedCell.ProfileImageView.getter : __ObjC.UIImageView"
-                  moduleName = "FacebookUI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sinbad/Desktop/IOS/FacebookUI/FacebookUI/ViewController.swift"
-                  timestampString = "540586326.309551"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "74"
-                  endingLineNumber = "74"
-                  offsetFromSymbolStart = "35">
-               </Location>
-            </Locations>
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

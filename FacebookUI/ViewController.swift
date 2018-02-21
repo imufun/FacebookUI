@@ -8,11 +8,43 @@
 
 import UIKit
 
+class Post{
+    var name : String?
+    var statusText : String?
+   // var image : String
+  //  init(name: String, post: String) {
+     ///   this.name = name
+     //   this.post = post
+  //  }
+}
+
+
+
 let cellId = "cellId"
 class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    
+    var post = [Post]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        let postName = Post()
+ 
+        postName.name = "The Advanture of sinbad"
+        postName.statusText = "1996 to 1998. It follows on the story from the pilot of the same name. It revolves around the series' protagonist, Sinbad. The series is a re- telling of the adventures of Sinbad from The Arabian Nights. Created by Ed Naha"
+        post.append(postName)
+        
+        
+        
+        let postNameText = Post()
+        postNameText.name = "The Titanic"
+        postNameText.statusText = "Titanic is a 1997 American epic romance-disaster film directed, written, co-produced and co-edited by James Cameron. A fictionalized account of the sinking of the RMS Titanic, it stars Leonardo DiCaprio and Kate Winslet as members of different social classes who fall in love aboard the ship during its ill-fated maiden "
+        post.append(postNameText)
+        
+        
         
         navigationItem.title = "FaceBook Feed"
         
@@ -21,11 +53,22 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return post.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let feedCell =  collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! FeedCell
+    
+        if let post = post[indexPath.item].statusText {
+            feedCell.StatusTextView.text = post
+        }
+        
+        if let name = post[indexPath.item].name {
+            feedCell.NameLabel.text = name
+        }
+        
+        
+        return feedCell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -40,6 +83,36 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
 }
 
 class FeedCell : UICollectionViewCell {
+    
+    
+    var post : Post? {
+        
+        didSet {
+            
+            if let name  = post?.name {
+                let attributeText = NSMutableAttributedString(string: name, attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14)])
+                
+                attributeText.append(NSAttributedString(string: "\nFebruary 18 | Bangladesh", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 12), NSForegroundColorAttributeName: UIColor.rgb(red: 155, green: 161, blue: 161)]))
+                
+                let paragrapStyle = NSMutableParagraphStyle()
+                paragrapStyle.lineSpacing = 4
+                
+                
+                attributeText.addAttribute(NSParagraphStyleAttributeName, value: paragrapStyle, range: NSMakeRange(0, attributeText.string.characters.count))
+                
+                NameLabel.attributedText = attributeText
+            }
+            
+            if let statusText = post?.statusText {
+                StatusTextView.text = statusText
+            }
+        }
+        
+        
+        
+    }
+    
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -87,19 +160,8 @@ class FeedCell : UICollectionViewCell {
     let  NameLabel: UILabel  = {
         let label = UILabel()
         
-        label.numberOfLines = 2
+        label.numberOfLines = 2      
         
-        let attributeText = NSMutableAttributedString(string: "Mohammad Imran Mia", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14)])
-        
-        attributeText.append(NSAttributedString(string: "\nFebruary 18 | Bangladesh", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 12), NSForegroundColorAttributeName: UIColor.rgb(red: 155, green: 161, blue: 161)]))
-        
-        let paragrapStyle = NSMutableParagraphStyle()
-        paragrapStyle.lineSpacing = 4
-        
-        
-        attributeText.addAttribute(NSParagraphStyleAttributeName, value: paragrapStyle, range: NSMakeRange(0, attributeText.string.characters.count))
-        
-        label.attributedText = attributeText
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -177,20 +239,6 @@ class FeedCell : UICollectionViewCell {
     }()
     
     
-    //    let likeButton  = FeedCell.buttonTitle(title: "like", imageName: #imageLiteral(resourceName: "like-1"))
-    //    let commentButton = FeedCell.buttonTitle(title: "Comment", imageName: #imageLiteral(resourceName: "comment"))
-    //    let shareButton = FeedCell.buttonTitle(title: "Share", imageName: #imageLiteral(resourceName: "share"))
-    //
-    //    static func buttonTitle(title: String, imageName: String) -> UIButton {
-    //        let button = UIButton()
-    //        button.setTitle(title, for: .normal)
-    //       // button.setImage(UIImage(named: imageName), for: .normal)
-    //        button.setImage(imageName, for: .normal)
-    //        button.setTitleColor(UIColor.rgb(red: 143, green: 150, blue: 263), for: .normal)
-    //        button.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
-    //        //button.titleLabel?.font = UIFont.systemFontSize(14)
-    //        return button
-    //    }
     
 }
 
