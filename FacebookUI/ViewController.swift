@@ -11,6 +11,8 @@ import UIKit
 class Post{
     var name : String?
     var statusText : String?
+    var profileImage : String?
+    var coverImage : String?
    // var image : String
   //  init(name: String, post: String) {
      ///   this.name = name
@@ -35,6 +37,8 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
  
         postName.name = "The Advanture of sinbad"
         postName.statusText = "1996 to 1998. It follows on the story from the pilot of the same name. It revolves around the series' protagonist, Sinbad. The series is a re- telling of the adventures of Sinbad from The Arabian Nights. Created by Ed Naha"
+        postName.profileImage = "sinbad"
+        postName.coverImage = "cover"
         post.append(postName)
         
         
@@ -42,6 +46,8 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let postNameText = Post()
         postNameText.name = "The Titanic"
         postNameText.statusText = "Titanic is a 1997 American epic romance-disaster film directed, written, co-produced and co-edited by James Cameron. A fictionalized account of the sinking of the RMS Titanic, it stars Leonardo DiCaprio and Kate Winslet as members of different social classes who fall in love aboard the ship during its ill-fated maiden "
+       postNameText.profileImage = "steve_profile"
+        postNameText.coverImage = "steve_status"
         post.append(postNameText)
         
         
@@ -59,20 +65,21 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let feedCell =  collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! FeedCell
     
-        if let post = post[indexPath.item].statusText {
-            feedCell.StatusTextView.text = post
-        }
-        
-        if let name = post[indexPath.item].name {
-            feedCell.NameLabel.text = name
-        }
-        
-        
+        feedCell.post = post[indexPath.item]
         return feedCell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 400)
+        
+        if let statusText = post[indexPath.item].statusText {
+        
+
+            let rec   = NSString(string: statusText).boundingRect(with: CGSize(width: view.frame.width, height: 1000) , options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 12)], context: nil)
+            
+            let khownHeight: CGFloat = 8+44+4+4+200+30+8+44
+            return CGSize(width: view.frame.width, height: rec.height + khownHeight + 24)
+        }
+        return CGSize(width: view.frame.width, height: 500)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -100,11 +107,19 @@ class FeedCell : UICollectionViewCell {
                 
                 attributeText.addAttribute(NSParagraphStyleAttributeName, value: paragrapStyle, range: NSMakeRange(0, attributeText.string.characters.count))
                 
+                
+                
                 NameLabel.attributedText = attributeText
             }
             
             if let statusText = post?.statusText {
                 StatusTextView.text = statusText
+            }
+            if let profileImgename = post?.profileImage {
+                ProfileImageView.image = UIImage(named: profileImgename)
+            }
+            if let profileCover = post?.coverImage {
+                ProfileCoverImage.image = UIImage(named: profileCover)
             }
         }
         
@@ -148,7 +163,9 @@ class FeedCell : UICollectionViewCell {
         //hack way to constant
         addConstraisWithFormat(format: "H:|[v0(v2)][v1(v2)][v2]|", views: likeButton, commentButton,shareButton)
         addConstraisWithFormat(format: "V:|-12-[v0]", views: NameLabel)
-        addConstraisWithFormat(format: "V:|-8-[v0(44)]-4-[v1(30)]-4-[v2]-8-[v3(30)]-8-[v4(0.5)][v5(44)]|", views: ProfileImageView, StatusTextView,ProfileCoverImage,likeCommentLable, divider,likeButton)
+        
+        
+        addConstraisWithFormat(format: "V:|-8-[v0(44)]-4-[v1]-4-[v2(200)]-8-[v3(30)]-8-[v4(0.5)][v5(44)]|", views: ProfileImageView, StatusTextView,ProfileCoverImage,likeCommentLable, divider,likeButton)
        
         //hack way to constant
         addConstraisWithFormat(format: "V:[v0(44)]|", views: commentButton)
