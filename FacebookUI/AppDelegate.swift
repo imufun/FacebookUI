@@ -20,10 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window  = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let feedController = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
-        let navigationControler  = UINavigationController(rootViewController: feedController)
-        window?.rootViewController = navigationControler
-        
+   
+        window?.rootViewController = CustomTabBarController()
         
         UINavigationBar.appearance().barTintColor = UIColor(red: 54/255, green: 90/255, blue: 149/255, alpha: 1)
         

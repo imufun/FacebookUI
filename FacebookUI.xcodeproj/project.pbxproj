@@ -12,6 +12,8 @@
 		A11C255A203834CA003F564E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11C2558203834CA003F564E /* Main.storyboard */; };
 		A11C255C203834CA003F564E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A11C255B203834CA003F564E /* Assets.xcassets */; };
 		A11C255F203834CA003F564E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11C255D203834CA003F564E /* LaunchScreen.storyboard */; };
+		A183BE82203EFBF700139055 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A183BE81203EFBF700139055 /* CustomTabBarController.swift */; };
+		A183BE84203F0EE900139055 /* FriedReqestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A183BE83203F0EE900139055 /* FriedReqestController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		A11C255B203834CA003F564E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A11C255E203834CA003F564E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A11C2560203834CA003F564E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A183BE81203EFBF700139055 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		A183BE83203F0EE900139055 /* FriedReqestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriedReqestController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				A11C2554203834CA003F564E /* AppDelegate.swift */,
 				A11C2556203834CA003F564E /* ViewController.swift */,
+				A183BE81203EFBF700139055 /* CustomTabBarController.swift */,
+				A183BE83203F0EE900139055 /* FriedReqestController.swift */,
 				A11C2558203834CA003F564E /* Main.storyboard */,
 				A11C255B203834CA003F564E /* Assets.xcassets */,
 				A11C255D203834CA003F564E /* LaunchScreen.storyboard */,
@@ -139,6 +145,8 @@
 			files = (
 				A11C2557203834CA003F564E /* ViewController.swift in Sources */,
 				A11C2555203834CA003F564E /* AppDelegate.swift in Sources */,
+				A183BE82203EFBF700139055 /* CustomTabBarController.swift in Sources */,
+				A183BE84203F0EE900139055 /* FriedReqestController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +312,7 @@
 				A11C2565203834CA003F564E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
