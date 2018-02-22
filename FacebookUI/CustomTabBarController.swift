@@ -23,7 +23,22 @@ class CustomTabBarController: UITabBarController {
         secondNavigationController.title = "Request"
         secondNavigationController.tabBarItem.image = UIImage(named: "requests_icon")
         
+        let messageController = MessageViewController()
+        let messageCv = UINavigationController(rootViewController: messageController)
+        messageCv.title = "Message"
+        messageCv.tabBarItem.image = UIImage(named: "messenger_icon")
         
-        viewControllers = [navigationControler, secondNavigationController]
+        
+        let notificationController = NotificationViewController()
+        let notificationVC  = UINavigationController(rootViewController: notificationController)
+        notificationVC.title = "Message"
+        notificationVC.tabBarItem.image = UIImage(named: "notification")
+        
+        let sideBar = LeftNavigationViewController()
+        let sideBarCV  = UINavigationController(rootViewController: sideBar)
+        sideBarCV.tabBarItem.image = UIImage(named: "menu")
+        
+        
+        viewControllers = [navigationControler, secondNavigationController,messageCv,notificationVC,sideBarCV]
     }
 }

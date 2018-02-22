@@ -14,6 +14,10 @@
 		A11C255F203834CA003F564E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11C255D203834CA003F564E /* LaunchScreen.storyboard */; };
 		A183BE82203EFBF700139055 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A183BE81203EFBF700139055 /* CustomTabBarController.swift */; };
 		A183BE84203F0EE900139055 /* FriedReqestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A183BE83203F0EE900139055 /* FriedReqestController.swift */; };
+		A183BE86203F320300139055 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A183BE85203F320300139055 /* Utils.swift */; };
+		A183BE88203F451600139055 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A183BE87203F451500139055 /* MessageViewController.swift */; };
+		A183BE8A203F452700139055 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A183BE89203F452700139055 /* NotificationViewController.swift */; };
+		A183BE8C203F453A00139055 /* LeftNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A183BE8B203F453A00139055 /* LeftNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		A11C2560203834CA003F564E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A183BE81203EFBF700139055 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		A183BE83203F0EE900139055 /* FriedReqestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriedReqestController.swift; sourceTree = "<group>"; };
+		A183BE85203F320300139055 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		A183BE87203F451500139055 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		A183BE89203F452700139055 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		A183BE8B203F453A00139055 /* LeftNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +69,11 @@
 				A11C2554203834CA003F564E /* AppDelegate.swift */,
 				A11C2556203834CA003F564E /* ViewController.swift */,
 				A183BE81203EFBF700139055 /* CustomTabBarController.swift */,
+				A183BE87203F451500139055 /* MessageViewController.swift */,
+				A183BE89203F452700139055 /* NotificationViewController.swift */,
+				A183BE8B203F453A00139055 /* LeftNavigationController.swift */,
 				A183BE83203F0EE900139055 /* FriedReqestController.swift */,
+				A183BE85203F320300139055 /* Utils.swift */,
 				A11C2558203834CA003F564E /* Main.storyboard */,
 				A11C255B203834CA003F564E /* Assets.xcassets */,
 				A11C255D203834CA003F564E /* LaunchScreen.storyboard */,
@@ -143,9 +155,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A183BE8C203F453A00139055 /* LeftNavigationController.swift in Sources */,
+				A183BE86203F320300139055 /* Utils.swift in Sources */,
 				A11C2557203834CA003F564E /* ViewController.swift in Sources */,
 				A11C2555203834CA003F564E /* AppDelegate.swift in Sources */,
+				A183BE8A203F452700139055 /* NotificationViewController.swift in Sources */,
 				A183BE82203EFBF700139055 /* CustomTabBarController.swift in Sources */,
+				A183BE88203F451600139055 /* MessageViewController.swift in Sources */,
 				A183BE84203F0EE900139055 /* FriedReqestController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
