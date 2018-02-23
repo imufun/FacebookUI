@@ -18,6 +18,7 @@
 		A183BE88203F451600139055 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A183BE87203F451500139055 /* MessageViewController.swift */; };
 		A183BE8A203F452700139055 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A183BE89203F452700139055 /* NotificationViewController.swift */; };
 		A183BE8C203F453A00139055 /* LeftNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A183BE8B203F453A00139055 /* LeftNavigationController.swift */; };
+		A183BE8E203F526900139055 /* ImageZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A183BE8D203F526800139055 /* ImageZoom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		A183BE87203F451500139055 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		A183BE89203F452700139055 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		A183BE8B203F453A00139055 /* LeftNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftNavigationController.swift; sourceTree = "<group>"; };
+		A183BE8D203F526800139055 /* ImageZoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageZoom.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				A183BE89203F452700139055 /* NotificationViewController.swift */,
 				A183BE8B203F453A00139055 /* LeftNavigationController.swift */,
 				A183BE83203F0EE900139055 /* FriedReqestController.swift */,
+				A183BE8D203F526800139055 /* ImageZoom.swift */,
 				A183BE85203F320300139055 /* Utils.swift */,
 				A11C2558203834CA003F564E /* Main.storyboard */,
 				A11C255B203834CA003F564E /* Assets.xcassets */,
@@ -163,6 +166,7 @@
 				A183BE82203EFBF700139055 /* CustomTabBarController.swift in Sources */,
 				A183BE88203F451600139055 /* MessageViewController.swift in Sources */,
 				A183BE84203F0EE900139055 /* FriedReqestController.swift in Sources */,
+				A183BE8E203F526900139055 /* ImageZoom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,3 +1,4 @@
+
 //
 //  ViewController.swift
 //  FacebookUI
@@ -30,9 +31,7 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+    
         let postName = Post()
  
         postName.name = "The Advanture of sinbad"
@@ -53,9 +52,13 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         
         navigationItem.title = "FaceBook Feed"
-        
         collectionView?.backgroundColor = UIColor(white: 0.95, alpha: 1)
         collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellId )
+        
+        
+        
+        
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -66,6 +69,7 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let feedCell =  collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! FeedCell
     
         feedCell.post = post[indexPath.item]
+        feedCell.feedController = self
         return feedCell
     }
     
@@ -87,10 +91,34 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.collectionViewLayout.invalidateLayout()
     }
     
+    func animatedImageView(ProfileCoverImage: UIImageView){
+ 
+        // relative position to image coordinate
+        if let startingFrame = ProfileCoverImage.superview?.convert(ProfileCoverImage.frame, to: nil){
+            let zoomView = UIView()
+            zoomView.backgroundColor = UIColor.red
+            zoomView.frame = startingFrame
+            view.addSubview(zoomView)
+            
+            UIView.animate(withDuration: 0.75, animations: { 
+                let heigh = (self.view.frame.width / startingFrame.width) * startingFrame.height
+                let y = self.view.frame.height / 2 - heigh / 2
+                zoomView.frame  = CGRect(x: 0, y: y, width: self.view.frame.width, height: heigh)
+            })
+        }
+       
+    }
 }
 
 class FeedCell : UICollectionViewCell {
     
+    var feedController : FeedController?
+    
+    func animate(){
+        feedController?.animatedImageView(ProfileCoverImage: ProfileCoverImage)
+        
+        
+    }
     
     var post : Post? {
         
@@ -137,7 +165,7 @@ class FeedCell : UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+  
     func setupView() {
         backgroundColor = UIColor.white
         
@@ -150,6 +178,9 @@ class FeedCell : UICollectionViewCell {
         addSubview(likeButton)
         addSubview(commentButton)
         addSubview(shareButton)
+        
+        
+        ProfileCoverImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(FeedCell.animate as (FeedCell) -> () -> ())))
         
         addConstraisWithFormat(format: "H:|-8-[v0(44)]-12-[v1]|", views: ProfileImageView, NameLabel)
         
@@ -207,6 +238,7 @@ class FeedCell : UICollectionViewCell {
         imageV.contentMode = .scaleAspectFill
         imageV.translatesAutoresizingMaskIntoConstraints = false
         imageV.layer.masksToBounds = true
+        imageV.isUserInteractionEnabled = true
         return imageV
         
     }()
