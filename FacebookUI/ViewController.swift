@@ -94,6 +94,9 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
     let zoomView = UIImageView()
     let blackBackground = UIView()
     var ProfileCoverImage : UIImageView?
+    var navBarCover = UIView()
+    var tabBarCover = UIView()
+    
     
     func animatedImageView(ProfileCoverImage: UIImageView){
         
@@ -101,14 +104,31 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         // relative position to image coordinate
         if let startingFrame = ProfileCoverImage.superview?.convert(ProfileCoverImage.frame, to: nil){
-            
+           
+            ProfileCoverImage.alpha  = 0
             
             blackBackground.frame = self.view.frame
             blackBackground.backgroundColor = UIColor.black
             blackBackground.alpha = 0
             view.addSubview(blackBackground)
             
-            ProfileCoverImage.alpha  = 0
+           
+            
+            // nav bar transparent
+            navBarCover.frame = CGRect(x: 0, y: 0, width: 1000, height: 20+44)
+            navBarCover.backgroundColor = UIColor.black
+            navBarCover.alpha = 0
+            
+            
+            if let keyWindow = UIApplication.shared.keyWindow {
+                keyWindow.addSubview(navBarCover)
+                tabBarCover.frame = CGRect(x: 0, y: keyWindow.frame.height - 49, width: 1000, height: 49)
+                tabBarCover.backgroundColor = UIColor.black
+                tabBarCover.alpha = 0
+                keyWindow.addSubview(tabBarCover)
+            }
+            
+            
             
             zoomView.backgroundColor = UIColor.red
             zoomView.frame = startingFrame
@@ -126,6 +146,8 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 let y = self.view.frame.height / 2 - heigh / 2
                 self.zoomView.frame  = CGRect(x: 0, y: y, width: self.view.frame.width, height: heigh)
                 self.blackBackground.alpha = 1
+                self.navBarCover.alpha = 1
+                self.tabBarCover.alpha = 1
             })
         }
        
@@ -139,12 +161,15 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 
                 self.zoomView.frame = startingFrame
                 self.blackBackground.alpha = 0
-                
+                self.navBarCover.alpha = 0
+                self.tabBarCover.alpha = 0
             }, completion: { (didComplete) in
                 
                 self.zoomView.removeFromSuperview()
                 self.blackBackground.removeFromSuperview()
                 self.ProfileCoverImage?.alpha = 1
+                self.navBarCover.removeFromSuperview()
+                self.tabBarCover.removeFromSuperview()
             })
         }
     }
