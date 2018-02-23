@@ -14,11 +14,11 @@ class Post{
     var statusText : String?
     var profileImage : String?
     var coverImage : String?
-   // var image : String
-  //  init(name: String, post: String) {
-     ///   this.name = name
-     //   this.post = post
-  //  }
+    // var image : String
+    //  init(name: String, post: String) {
+    ///   this.name = name
+    //   this.post = post
+    //  }
 }
 
 
@@ -31,9 +31,9 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         let postName = Post()
- 
+        
         postName.name = "The Advanture of sinbad"
         postName.statusText = "1996 to 1998. It follows on the story from the pilot of the same name. It revolves around the series' protagonist, Sinbad. The series is a re- telling of the adventures of Sinbad from The Arabian Nights. Created by Ed Naha"
         postName.profileImage = "sinbad"
@@ -45,7 +45,7 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let postNameText = Post()
         postNameText.name = "The Titanic"
         postNameText.statusText = "Titanic is a 1997 American epic romance-disaster film directed, written, co-produced and co-edited by James Cameron. A fictionalized account of the sinking of the RMS Titanic, it stars Leonardo DiCaprio and Kate Winslet as members of different social classes who fall in love aboard the ship during its ill-fated maiden "
-       postNameText.profileImage = "steve_profile"
+        postNameText.profileImage = "steve_profile"
         postNameText.coverImage = "steve_status"
         post.append(postNameText)
         
@@ -67,7 +67,7 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let feedCell =  collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! FeedCell
-    
+        
         feedCell.post = post[indexPath.item]
         feedCell.feedController = self
         return feedCell
@@ -76,8 +76,8 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if let statusText = post[indexPath.item].statusText {
-        
-
+            
+            
             let rec   = NSString(string: statusText).boundingRect(with: CGSize(width: view.frame.width, height: 1000) , options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 12)], context: nil)
             
             let khownHeight: CGFloat = 8+44+4+4+200+30+8+44
@@ -91,23 +91,64 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.collectionViewLayout.invalidateLayout()
     }
     
+    let zoomView = UIImageView()
+    let blackBackground = UIView()
+    var ProfileCoverImage : UIImageView?
+    
     func animatedImageView(ProfileCoverImage: UIImageView){
- 
+        
+        self.ProfileCoverImage = ProfileCoverImage
+        
         // relative position to image coordinate
         if let startingFrame = ProfileCoverImage.superview?.convert(ProfileCoverImage.frame, to: nil){
-            let zoomView = UIView()
+            
+            
+            blackBackground.frame = self.view.frame
+            blackBackground.backgroundColor = UIColor.black
+            blackBackground.alpha = 0
+            view.addSubview(blackBackground)
+            
+            ProfileCoverImage.alpha  = 0
+            
             zoomView.backgroundColor = UIColor.red
             zoomView.frame = startingFrame
+            zoomView.isUserInteractionEnabled = true
+            zoomView.contentMode = .scaleAspectFill
+            zoomView.clipsToBounds = true
+            zoomView.image = ProfileCoverImage.image
             view.addSubview(zoomView)
             
-            UIView.animate(withDuration: 0.75, animations: { 
+            
+           // zoomView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector(("zoomOut"))))
+            zoomView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(FeedController.zoomOut)))
+            UIView.animate(withDuration: 0.75, animations: {
                 let heigh = (self.view.frame.width / startingFrame.width) * startingFrame.height
                 let y = self.view.frame.height / 2 - heigh / 2
-                zoomView.frame  = CGRect(x: 0, y: y, width: self.view.frame.width, height: heigh)
+                self.zoomView.frame  = CGRect(x: 0, y: y, width: self.view.frame.width, height: heigh)
+                self.blackBackground.alpha = 1
             })
         }
        
     }
+    
+    
+    func zoomOut(){
+        if let startingFrame = ProfileCoverImage?.superview?.convert((ProfileCoverImage?.frame)!, to: nil){
+        
+            UIView.animate(withDuration: 0.75, animations: {
+                
+                self.zoomView.frame = startingFrame
+                self.blackBackground.alpha = 0
+                
+            }, completion: { (didComplete) in
+                
+                self.zoomView.removeFromSuperview()
+                self.blackBackground.removeFromSuperview()
+                self.ProfileCoverImage?.alpha = 1
+            })
+        }
+    }
+    
 }
 
 class FeedCell : UICollectionViewCell {
@@ -165,7 +206,7 @@ class FeedCell : UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-  
+    
     func setupView() {
         backgroundColor = UIColor.white
         
@@ -197,7 +238,7 @@ class FeedCell : UICollectionViewCell {
         
         
         addConstraisWithFormat(format: "V:|-8-[v0(44)]-4-[v1]-4-[v2(200)]-8-[v3(30)]-8-[v4(0.5)][v5(44)]|", views: ProfileImageView, StatusTextView,ProfileCoverImage,likeCommentLable, divider,likeButton)
-       
+        
         //hack way to constant
         addConstraisWithFormat(format: "V:[v0(44)]|", views: commentButton)
         addConstraisWithFormat(format: "V:[v0(44)]|", views: shareButton)
@@ -208,7 +249,7 @@ class FeedCell : UICollectionViewCell {
     let  NameLabel: UILabel  = {
         let label = UILabel()
         
-        label.numberOfLines = 2      
+        label.numberOfLines = 2
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -218,7 +259,7 @@ class FeedCell : UICollectionViewCell {
     let ProfileImageView : UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "sinbad")
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = UIColor.red
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
